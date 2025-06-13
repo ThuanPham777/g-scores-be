@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, student } from '@prisma/client';
 import * as fs from 'fs';
 import * as path from 'path';
 import csv from 'csv-parser';
@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 async function main() {
     const filePath = path.join(__dirname, '..', 'dataset', 'diem_thi_thpt_2024.csv');
-    const students = [];
+    const students: student[] = [];
 
     await new Promise<void>((resolve, reject) => {
         fs.createReadStream(filePath)
