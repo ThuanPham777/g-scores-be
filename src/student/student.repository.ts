@@ -21,7 +21,7 @@ export class StudentRepository {
             "physics",
             "chemistry",
             ("math" + "physics" + "chemistry") AS total
-        FROM "Student"
+        FROM "student"
         WHERE "math" IS NOT NULL AND "physics" IS NOT NULL AND "chemistry" IS NOT NULL
         ORDER BY total DESC
         LIMIT 10
@@ -38,7 +38,7 @@ export class StudentRepository {
         const validSubjects = [
             'math',
             'literature',
-            'foreignLanguage',
+            'foreignlanguage',
             'physics',
             'chemistry',
             'biology',
@@ -58,7 +58,7 @@ export class StudentRepository {
             COUNT(CASE WHEN "${subject}" >= 6 AND "${subject}" < 8 THEN 1 END) AS "6-7.99",
             COUNT(CASE WHEN "${subject}" >= 4 AND "${subject}" < 6 THEN 1 END) AS "4-5.99",
             COUNT(CASE WHEN "${subject}" < 4 THEN 1 END) AS "<4"
-        FROM "Student"
+        FROM "student"
         WHERE "${subject}" IS NOT NULL
     `;
 

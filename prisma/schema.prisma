@@ -7,16 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Student {
-  id             String   @id
+model student {
+  id              String   @id
   math            Float?
   literature      Float?
-  foreignLanguage Float?
+  foreignlanguage Float?
   physics         Float?
   chemistry       Float?
   biology         Float?
   history         Float?
   geography       Float?
   civics          Float?
-  foreignLangCode String?
+  foreignlangcode String?
 }

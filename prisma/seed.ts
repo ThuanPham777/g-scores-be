@@ -21,14 +21,14 @@ async function main() {
                     id: row.sbd,
                     math: parseFloatOrNull(row.toan),
                     literature: parseFloatOrNull(row.ngu_van),
-                    foreignLanguage: parseFloatOrNull(row.ngoai_ngu),
+                    foreignlanguage: parseFloatOrNull(row.ngoai_ngu),
                     physics: parseFloatOrNull(row.vat_li),
                     chemistry: parseFloatOrNull(row.hoa_hoc),
                     biology: parseFloatOrNull(row.sinh_hoc),
                     history: parseFloatOrNull(row.lich_su),
                     geography: parseFloatOrNull(row.dia_li),
                     civics: parseFloatOrNull(row.gdcd),
-                    foreignLangCode: row.ma_ngoai_ngu || null,
+                    foreignlangcode: row.ma_ngoai_ngu || null,
                 });
             })
             .on('end', () => {
@@ -41,30 +41,26 @@ async function main() {
             .on('error', reject);
     });
 
-    //await prisma.$executeRawUnsafe(`SELECT * FROM "Student"`);
+    //await prisma.$executeRawUnsafe(`DELETE FROM "student"`);
 
     console.log(`Importing ${students.length} students...`);
 
-    // Chia nhỏ theo batch 1000 record/lần
+    //Chia nhỏ theo batch 1000 record/lần
     const batchSize = 1000;
     for (let i = 0; i < students.length; i += batchSize) {
         const batch = students.slice(i, i + batchSize);
 
         const values = batch.map((s) =>
-            `('${s.id}', ${nullable(s.math)}, ${nullable(s.literature)}, ${nullable(s.foreignLanguage)}, ${nullable(s.physics)}, ${nullable(s.chemistry)}, ${nullable(s.biology)}, ${nullable(s.history)}, ${nullable(s.geography)}, ${nullable(s.civics)}, ${s.foreignLangCode ? `'${s.foreignLangCode}'` : 'NULL'})`
+            `('${s.id}', ${nullable(s.math)}, ${nullable(s.literature)}, ${nullable(s.foreignlanguage)}, ${nullable(s.physics)}, ${nullable(s.chemistry)}, ${nullable(s.biology)}, ${nullable(s.history)}, ${nullable(s.geography)}, ${nullable(s.civics)}, ${s.foreignlangcode ? `'${s.foreignlangcode}'` : 'NULL'})`
         ).join(',');
 
-        console.log('Sample values:', values.substring(0, 200)); // Debug log
-
         await prisma.$executeRawUnsafe(`
-        INSERT INTO "Student" (
-            "id", "math", "literature", "foreignLanguage", "physics",
-            "chemistry", "biology", "history", "geography", "civics", "foreignLangCode"
+        INSERT INTO "student" (
+            "id", "math", "literature", "foreignlanguage", "physics",
+            "chemistry", "biology", "history", "geography", "civics", "foreignlangcode"
         ) VALUES
         ${values}
         `);
-
-        console.log(`Inserted batch ${i / batchSize + 1}`);
     }
 
     console.log('Seeding complete.');
