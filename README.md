@@ -29,8 +29,12 @@ docker-compose up -d
 npx prisma generate
 npx prisma migrate dev --name init
 ```
+### 6. Thêm dữ liệu từ csv chạy lênh
+```bash
+npm run prisma:seed
+```
 
-#### 6. Khởi động ứng dụng
+#### 7. Khởi động ứng dụng
 ```bash
 npm run start:dev
 ```
