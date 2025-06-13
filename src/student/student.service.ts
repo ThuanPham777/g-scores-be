@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { StudentRepository } from './student.repository';
-import { TopStudent } from 'src/type/topAStudents';
 import { SearchScoreDto } from './dto/search-score.dto';
 import { GetScoreLevelReportBySubjectDto } from './dto/get-score-level-report-by-subject';
 

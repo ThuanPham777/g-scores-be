@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service'; // Đảm bảo bạn đã có PrismaService
-import { TopStudent } from 'src/type/topAStudents';
 
 
 @Injectable()
