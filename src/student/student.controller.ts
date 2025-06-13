@@ -4,7 +4,6 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ApiRes } from 'src/type/custom-respone';
 import { SUCCESS } from 'src/constants/response.constant';
 import { SearchScoreDto } from './dto/search-score.dto';
-import { query } from 'express';
 import { GetScoreLevelReportBySubjectDto } from './dto/get-score-level-report-by-subject';
 
 @ApiTags("Students")

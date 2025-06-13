@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as csv from 'csv-parser';
+import fs from 'fs';
+import path from 'path';
+import csv from 'csv-parser';
 
 const prisma = new PrismaClient();
 
@@ -15,7 +15,7 @@ async function main() {
             .on('data', (row) => {
                 // Debug log for first row
                 if (students.length === 0) {
-                    console.log('First row from CSV:', row);
+                    //console.log('First row from CSV:', row);
                 }
                 students.push({
                     id: row.sbd,
@@ -34,7 +34,7 @@ async function main() {
             .on('end', () => {
                 // Debug log for first processed student
                 if (students.length > 0) {
-                    console.log('First processed student:', students[0]);
+                    //console.log('First processed student:', students[0]);
                 }
                 resolve();
             })
@@ -43,7 +43,7 @@ async function main() {
 
     //await prisma.$executeRawUnsafe(`DELETE FROM "student"`);
 
-    console.log(`Importing ${students.length} students...`);
+    //console.log(`Importing ${students.length} students...`);
 
     //Chia nhỏ theo batch 1000 record/lần
     const batchSize = 1000;
@@ -63,7 +63,7 @@ async function main() {
         `);
     }
 
-    console.log('Seeding complete.');
+    //console.log('Seeding complete.');
 }
 
 function parseFloatOrNull(value: string): number | null {

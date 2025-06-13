@@ -1,21 +1,4 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2017",
-    "lib": [
-      "esnext"
-    ],
-    "types": [
-      "node"
-    ],
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "skipLibCheck": true
-  },
   "extends": "./tsconfig.json",
   "exclude": [
     "node_modules",
